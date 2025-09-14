@@ -1,0 +1,56 @@
+# 📝 Task Manager API (Express + JSON File Storage)
+
+This is a simple **Task Manager REST API** built with **Express.js**.  
+Tasks are stored in a JSON file (`task.json`) and also cached in memory for fast access.  
+
+You can:  
+- Create tasks  
+- Read tasks (all, by ID, or filter by completion)  
+- Update tasks  
+- Delete tasks  
+
+---
+
+## 🚀 Features
+- ✅ **In-memory store + persistent file storage**  
+- ✅ **CRUD operations** (`Create, Read, Update, Delete`)  
+- ✅ **Filter tasks** by completion (`completed=true` or `completed=false`)  
+- ✅ **Auto-increment task IDs**  
+- ✅ **Validation middleware** for request body  
+- ✅ **404 handling** for invalid task IDs  
+
+---
+
+## 📂 Project Structure
+project/
+│── controllers/
+│ └── task.controllers.cjs # Controller logic
+│── middlewares/
+│ └── validate.middlewares.cjs # Request validation
+│── routes/
+│ └── task.routes.cjs # Routes definition
+│── task.json # Persistent storage
+│── server.js # Express app entry
+
+## 📡 API Endpoints
+```bash
+GET /tasks
+GET /tasks?completed=true
+GET /tasks?completed=false
+GET /tasks/:id
+POST /tasks
+Content-Type: application/json
+{
+  "title": "Learn Express",
+  "completed": false
+}
+PUT /tasks/:id
+Content-Type: application/json
+DELETE /tasks/:id
+```
+## 🧪 Testing with cURL
+```bash
+curl -X POST http://localhost:3000/tasks \
+   -H "Content-Type: application/json" \
+   -d '{"title":"Read a book","completed":false}'
+```
